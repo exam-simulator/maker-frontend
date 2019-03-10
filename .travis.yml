@@ -1,0 +1,18 @@
+language: node.js
+node_js:
+- '10'
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
+- npm run build
+script:
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: FXtNvsl3mnr2Uz0/ua+RNsyDztGy2MktxFvFNtmxPhrYAaUoEbrgtrGwNYbJFpdfdi+bvr/F6YbtkVfjAkkDOtlsvojpYaVZx3u1CZ/OrqXcZZU4zOmE3PYFjZ4UFRvg8cqf7E5Von50GBZySx31nqx1mLDMZtApaiaCtQVOQS3TQ81s1fkRjfFPH4Q6dV39lt2tBSRfSEj3V/MY2tq5QrPUbyH5Y4R1lYCBuTyQ8iDZFdQM9Jg21fvXMLD1+Rhf8yAT5A6dk3T0Fus/oyNvAS4/yTsCdRu68Cgta//bxtlnZtlYJFXTK73xoiO2LbJ9WcM/S8NExZIc/fVFsYkyfBTD4QgIUNhlnTcM5EtNqPNfIZ9QsdQHKQsFLisOnfw4R34fYRBDxcVNppXZqRQHVTQ7APHmdhvbaQ8yoMquCmdei7yQG7EwnJGlRMBNVRkmcVPsLzMKaez+uUHHnIPLqlgGXX1H2+zUQ79B1PN6THpmBBYItPzlAk1MruuaLV8n8Z9JMKGGpcTobtOB4LFRPlaAEAweUMGpI4lvCeRFjAA8LOSg4e9rvUkQQkM4EVrwp1ruA533gmVdWNOGHvHAa+Z0yG1IXFPNH82NZeDVwyB3A7QzHhzP7swLPwea/2jNWJ3gklJytOmlxVU20/32i57gKfYWoxljtAUzB9Tnx8s=
+  app: exam-maker
+  on:
+    repo: exam-simulator/maker-frontend

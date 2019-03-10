@@ -1,0 +1,8 @@
+# vscode settings 
+.vscode
+
+# node modules
+node_modules
+
+# build files
+.next
