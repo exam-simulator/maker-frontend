@@ -38,6 +38,7 @@ export const Box = styled.div`
   font: 1.5rem 'Open Sans Semi';
   cursor: pointer;
   margin: 0.2rem;
+  user-select: none;
   &:hover {
     outline: 2px solid ${props => props.theme.primary};
     border: 2px solid ${props => props.theme.grey[10]};
