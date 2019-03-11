@@ -3,6 +3,8 @@ import { KeyboardArrowLeft } from 'styled-icons/material/KeyboardArrowLeft'
 import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight'
 import { ControlsStyles, Box, ArrowBox } from '../styles/Controls'
 import AddQuestion from './AddQuestion'
+import { examById } from '../../../apollo/query/exam'
+import defaultQuestion from '../../../lib/defaultQuestion'
 
 export default class Controls extends React.Component {
   state = {
@@ -41,16 +43,28 @@ export default class Controls extends React.Component {
     }
   }
 
-  onAddQuestion = async createQuestion => {
-    await createQuestion()
-    setTimeout(() => {
-      const x = this.props.test.length
-      this.props.setModeState(x - 1)
-      const totalWidth = x * 55
-      const width = this.row.clientWidth
-      const shifts = Math.floor(totalWidth / width)
-      this.setState({ shifts, shift: shifts })
-    }, 1000)
+  onAddQuestion = async (createQuestion, id) => {
+    await createQuestion({
+      variables: { id },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        createQuestion: {
+          __typename: 'Payload',
+          success: true
+        }
+      },
+      update: (proxy, { data: { createQuestion } }) => {
+        const data = proxy.readQuery({ query: examById, variables: { id } })
+        data.exam.test.push(defaultQuestion())
+        proxy.writeQuery({ query: examById, variables: { id }, data })
+      }
+    })
+    const x = this.props.test.length
+    this.props.setModeState(x - 1)
+    const totalWidth = x * 55
+    const width = this.row.clientWidth
+    const shifts = Math.floor(totalWidth / width)
+    this.setState({ shifts, shift: shifts })
   }
 
   render() {

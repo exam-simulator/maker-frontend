@@ -1,7 +1,6 @@
 import { Mutation } from 'react-apollo'
 import { Add } from 'styled-icons/material/Add'
 import { createQuestion } from '../../../apollo/mutation/createQuestion'
-import { examById } from '../../../apollo/query/exam'
 import { Box } from '../styles/Controls'
 import styled, { keyframes } from 'styled-components'
 import { Spinner2 as Spinner } from 'styled-icons/icomoon/Spinner2'
@@ -23,13 +22,9 @@ const SpinnerRed = styled(Spinner)`
 `
 
 export default ({ id, onClick }) => (
-  <Mutation
-    mutation={createQuestion}
-    variables={{ id }}
-    refetchQueries={[{ query: examById, variables: { id } }]}
-  >
+  <Mutation mutation={createQuestion}>
     {(createQuestion, { loading }) => (
-      <Box onClick={() => onClick(createQuestion)}>
+      <Box onClick={() => onClick(createQuestion, id)}>
         {loading ? <SpinnerRed /> : <Add className="add" />}
       </Box>
     )}
