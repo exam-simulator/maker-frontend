@@ -131,6 +131,16 @@ export default class ExamMaker extends React.Component {
     }
   }
 
+  onDeleteQuestion = async deleteQuestion => {
+    const confirm = window.confirm('Are you sure you want to delete this question?')
+    if (confirm) {
+      const res = await deleteQuestion()
+      if (res.data.deleteQuestion.success) {
+        this.setState({ mode: -1 })
+      }
+    }
+  }
+
   render() {
     const {
       state: { id, published, mode, title, description, code, time, pass, image, cover, test }
@@ -154,7 +164,7 @@ export default class ExamMaker extends React.Component {
               onDeleteExam={this.onDeleteExam}
             />
           ) : (
-            <QuestionForm id={id} question={test[mode]} />
+            <QuestionForm id={id} question={test[mode]} onDeleteQuestion={this.onDeleteQuestion} />
           )}
           <Controls mode={mode} id={id} test={test} setModeState={this.setModeState} />
         </MainContent>

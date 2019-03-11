@@ -1,10 +1,13 @@
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
 import { Add } from 'styled-icons/material/Add'
+import { Delete } from 'styled-icons/material/Delete'
 import { createNode } from '../../apollo/mutation/createNode'
+import { deleteQuestion } from '../../apollo/mutation/deleteQuestion'
 import { examById } from '../../apollo/query/exam'
 import { SubHeading } from './styles/SubHeading'
 import { Center } from './styles/Center'
+import { Action } from './MainForm/Actions'
 import NodeInput from './NodeInput'
 import Type from './Type'
 import ChoiceInput from './ChoiceInput'
@@ -14,7 +17,7 @@ const QuestionFormStyles = styled.div`
   grid-template-columns: 60% 40%;
 `
 
-export default ({ id, question }) => (
+export default ({ id, question, onDeleteQuestion }) => (
   <QuestionFormStyles>
     <Center>
       <SubHeading>
@@ -83,6 +86,20 @@ export default ({ id, question }) => (
           variant={question.variant}
         />
       ))}
+      <SubHeading>
+        <span>Delete</span>
+        <Mutation
+          mutation={deleteQuestion}
+          variables={{ id: question.id }}
+          refetchQueries={[{ query: examById, variables: { id } }]}
+        >
+          {(deleteQuestion, { loading }) => (
+            <Action onClick={() => onDeleteQuestion(deleteQuestion)}>
+              <Delete size={20} />
+            </Action>
+          )}
+        </Mutation>
+      </SubHeading>
     </Center>
   </QuestionFormStyles>
 )

@@ -43,22 +43,8 @@ export default class Controls extends React.Component {
     }
   }
 
-  onAddQuestion = async (createQuestion, id) => {
-    await createQuestion({
-      variables: { id },
-      optimisticResponse: {
-        __typename: 'Mutation',
-        createQuestion: {
-          __typename: 'Payload',
-          success: true
-        }
-      },
-      update: (proxy, { data: { createQuestion } }) => {
-        const data = proxy.readQuery({ query: examById, variables: { id } })
-        data.exam.test.push(defaultQuestion())
-        proxy.writeQuery({ query: examById, variables: { id }, data })
-      }
-    })
+  onAddQuestion = async createQuestion => {
+    await createQuestion()
     const x = this.props.test.length
     this.props.setModeState(x - 1)
     const totalWidth = x * 55

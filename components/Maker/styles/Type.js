@@ -11,6 +11,7 @@ export const TypeStyles = styled.div`
     border-radius: 2px;
     color: ${props => props.theme.grey[5]};
     padding: 0.4rem 1rem;
+    margin-right: 1rem;
     cursor: pointer;
     &:hover {
       outline: 2px solid ${props => props.theme.primary};
