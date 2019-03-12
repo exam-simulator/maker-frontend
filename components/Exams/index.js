@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { withApollo, Mutation } from 'react-apollo'
 import debounce from 'lodash.debounce'
-import { examsByTerm } from '../../apollo/query/exams'
+import { examsByTerm } from '../../apollo/query/examsByTerm'
 import { updateExam } from '../../apollo/mutation/updateExam'
 import { BannerTop, BannerTitle } from '../Shared/Banner'
 import ExamCard from './ExamCard'

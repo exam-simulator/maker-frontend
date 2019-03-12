@@ -1,5 +1,7 @@
+import { Query } from 'react-apollo'
 import Router from 'next/router'
 import styled from 'styled-components'
+import { examsByUser } from '../../apollo/query/examsByUser'
 import { BannerTop, BannerTitle } from '../Shared/Banner'
 import ExamCard from '../Exams/ExamCard'
 
@@ -15,32 +17,36 @@ const MainContent = styled.div`
   }
 `
 
-export default class MyExams extends React.Component {
-  onEdit = id => Router.push({ pathname: '/maker', query: { id } })
-
-  render() {
-    const {
-      props: { user }
-    } = this
-    return (
-      <div>
-        <BannerTop>
-          <BannerTitle>My Exams</BannerTitle>
-        </BannerTop>
-        <MainContent>
-          <div className="exams">
-            {user.exams ? (
-              user.exams
-                .reverse()
-                .map((e, i) => (
-                  <ExamCard key={e.id} exam={e} edit={true} onEdit={() => this.onEdit(e.id)} />
-                ))
-            ) : (
-              <div>no exams</div>
-            )}
-          </div>
-        </MainContent>
-      </div>
-    )
-  }
-}
+export default React.memo(({ user }) => (
+  <Query query={examsByUser} variables={{ id: user.id }}>
+    {({ data, loading, error }) => {
+      if (loading) return
+      const { exams } = data.exams
+      return (
+        <div>
+          <BannerTop>
+            <BannerTitle>My Exams</BannerTitle>
+          </BannerTop>
+          <MainContent>
+            <div className="exams">
+              {exams.length ? (
+                exams
+                  .reverse()
+                  .map((e, i) => (
+                    <ExamCard
+                      key={e.id}
+                      exam={e}
+                      edit={true}
+                      onEdit={() => Router.push({ pathname: '/maker', query: { id: e.id } })}
+                    />
+                  ))
+              ) : (
+                <div>no exams</div>
+              )}
+            </div>
+          </MainContent>
+        </div>
+      )
+    }}
+  </Query>
+))

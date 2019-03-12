@@ -93,8 +93,7 @@ export default class ExamMaker extends React.PureComponent {
 
   onDownloadExam = async updateExam => {
     const {
-      props: { user },
-      state: { id, title, code, time, pass, image, downloads, cover, test, createdAt }
+      props: { id, user, title, code, time, pass, image, downloads, cover, test, createdAt }
     } = this
     const exam = {
       id,

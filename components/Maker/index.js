@@ -22,22 +22,13 @@ export default class Maker extends React.PureComponent {
   }
 
   setMode = () => {
-    const {
-      query,
-      user: { exams }
-    } = this.props
+    const { query } = this.props
     if (!query.id) {
       Router.push('/')
     } else if (query.id === 'create') {
       this.setState({ loading: false, create: true })
     } else {
-      const examIds = exams.map(e => e.id)
-      const isOwner = examIds.includes(query.id)
-      if (isOwner) {
-        this.setState({ loading: false })
-      } else {
-        Router.push('/')
-      }
+      this.setState({ loading: false })
     }
   }
 
@@ -60,7 +51,11 @@ export default class Maker extends React.PureComponent {
         {({ data, loading, error }) => {
           if (loading) return <Loading size={50} />
           if (error) return <div>{error.message}</div>
-          return <ExamMaker exam={data.exam} user={user} />
+          const { exam } = data
+          if (exam.user.id !== user.id) {
+            return Router.push('/')
+          }
+          return <ExamMaker exam={exam} />
         }}
       </Query>
     )
