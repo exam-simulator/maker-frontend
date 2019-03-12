@@ -37,6 +37,7 @@ class ChoiceInput extends React.Component {
   onAnswerClick = async (updateQuestion, answer) => {
     let { questionId, answers, index } = this.props
     answers[index] = answer
+    this.setState({ answer })
     await updateQuestion({
       variables: { id: questionId, data: { answer: { set: answers } } }
     })

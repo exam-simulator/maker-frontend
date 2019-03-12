@@ -43,6 +43,7 @@ export default class Type extends React.Component {
 
   onSelect = async (updateQuestion, variant) => {
     const { id } = this.state
+    this.setState({ variant })
     await updateQuestion({
       variables: { id, data: { variant } }
     })

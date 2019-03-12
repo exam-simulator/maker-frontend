@@ -3,8 +3,6 @@ import { KeyboardArrowLeft } from 'styled-icons/material/KeyboardArrowLeft'
 import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight'
 import { ControlsStyles, Box, ArrowBox } from '../styles/Controls'
 import AddQuestion from './AddQuestion'
-import { examById } from '../../../apollo/query/exam'
-import defaultQuestion from '../../../lib/defaultQuestion'
 
 export default class Controls extends React.Component {
   state = {
