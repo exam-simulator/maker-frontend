@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading'
 export default class Maker extends React.Component {
   state = {
     loading: true,
-    create: true
+    create: false
   }
 
   componentDidMount() {
@@ -27,12 +27,14 @@ export default class Maker extends React.Component {
       user: { exams }
     } = this.props
     if (!query.id) {
+      Router.push('/')
+    } else if (query.id === 'create') {
       this.setState({ loading: false, create: true })
     } else {
       const examIds = exams.map(e => e.id)
       const isOwner = examIds.includes(query.id)
       if (isOwner) {
-        this.setState({ loading: false, create: !Boolean(query.id) })
+        this.setState({ loading: false })
       } else {
         Router.push('/')
       }

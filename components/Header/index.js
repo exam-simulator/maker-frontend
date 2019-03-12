@@ -9,7 +9,7 @@ export default ({ user, onShowModal }) => (
         <HeaderLink>Exam Maker</HeaderLink>
       </Link>
       <div className="links">
-        <Link href="/maker">
+        <Link href="/maker?id=create">
           <HeaderLink>Create</HeaderLink>
         </Link>
         <Link href="/schema">

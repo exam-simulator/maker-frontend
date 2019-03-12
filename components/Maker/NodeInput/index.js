@@ -41,6 +41,7 @@ export default class NodeInput extends React.Component {
       node: { id },
       type
     } = this.props
+    this.setState({ variant })
     await updateNode({
       variables: { type, id, variant }
     })
