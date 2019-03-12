@@ -4,7 +4,7 @@ import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight'
 import { ControlsStyles, Box, ArrowBox } from '../styles/Controls'
 import AddQuestion from './AddQuestion'
 
-export default class Controls extends React.Component {
+export default class Controls extends React.PureComponent {
   state = {
     width: 0,
     shift: 0,
@@ -16,13 +16,13 @@ export default class Controls extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.test.length !== this.props.test.length) {
+    if (prevProps.length !== this.props.length) {
       this.setInitialState()
     }
   }
 
   setInitialState = () => {
-    const totalWidth = this.props.test.length * 55
+    const totalWidth = this.props.length * 55
     const width = this.row.clientWidth
     const shifts = Math.floor(totalWidth / width)
     this.setState({ shifts, width })
@@ -43,7 +43,7 @@ export default class Controls extends React.Component {
 
   onAddQuestion = async createQuestion => {
     await createQuestion()
-    const x = this.props.test.length
+    const x = this.props.length
     this.props.setModeState(x - 1)
     const totalWidth = x * 55
     const width = this.row.clientWidth
@@ -53,11 +53,11 @@ export default class Controls extends React.Component {
 
   render() {
     const {
-      props: { mode, id, test, setModeState },
+      props: { mode, id, length, setModeState },
       state: { shifts, shift, width }
     } = this
     return (
-      <ControlsStyles items={test.length} shifts={shifts} shift={shift} width={width}>
+      <ControlsStyles items={length} shifts={shifts} shift={shift} width={width}>
         <Box highlight={mode === -1} onClick={() => setModeState(-1)}>
           <Tune className="settings" />
         </Box>
@@ -67,8 +67,8 @@ export default class Controls extends React.Component {
         </ArrowBox>
         <div ref={el => (this.row = el)} className="questions">
           <div className="wrapper">
-            {test.map((q, i) => (
-              <Box key={q.id} highlight={mode === i} onClick={() => setModeState(i)}>
+            {[...Array(length)].map((el, i) => (
+              <Box key={i} highlight={mode === i} onClick={() => setModeState(i)}>
                 {i + 1}
               </Box>
             ))}

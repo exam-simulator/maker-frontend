@@ -11,6 +11,7 @@ import { Action } from './MainForm/Actions'
 import NodeInput from './NodeInput'
 import Type from './Type'
 import ChoiceInput from './ChoiceInput'
+import Label from './MainForm/Label'
 
 const QuestionFormStyles = styled.div`
   display: grid;
@@ -21,7 +22,7 @@ export default React.memo(({ id, question, onDeleteQuestion }) => (
   <QuestionFormStyles>
     <Center>
       <SubHeading>
-        <span>Question</span>
+        <Label text="Question" />
         <Mutation
           mutation={createNode}
           variables={{ id: question.id, type: 'question' }}
@@ -38,7 +39,7 @@ export default React.memo(({ id, question, onDeleteQuestion }) => (
         <NodeInput key={q.id} id={id} type="question" index={i} node={q} />
       ))}
       <SubHeading>
-        <span>Explanation</span>
+        <Label text="Explanation" />
         <Mutation
           mutation={createNode}
           variables={{ id: question.id, type: 'explanation' }}
@@ -57,11 +58,11 @@ export default React.memo(({ id, question, onDeleteQuestion }) => (
     </Center>
     <Center>
       <SubHeading>
-        <span>Type</span>
+        <Label text="Type" />
         <Type id={id} question={question} />
       </SubHeading>
       <SubHeading>
-        <span>Answer</span>
+        <Label type="Answer" />
         <Mutation
           mutation={createNode}
           variables={{ id: question.id, type: 'choices' }}

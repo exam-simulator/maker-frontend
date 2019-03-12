@@ -1,14 +1,25 @@
 import styled from 'styled-components'
 import { Center } from '../styles/Center'
 import { SubHeading } from '../styles/SubHeading'
-import Properties from './Properties'
 import Actions from './Actions'
 import AddCover from './AddCover'
 import NodeInput from '../NodeInput'
+import Label from './Label'
+import Title from './Title'
+import Description from './Description'
+import Code from './Code'
+import Time from './Time'
+import Pass from './Pass'
+import Image from './Image'
 
 const MainFormStyles = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
+`
+
+const ExamProperties = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 export default React.memo(
@@ -29,7 +40,7 @@ export default React.memo(
     <MainFormStyles>
       <Center>
         <SubHeading>
-          <span>Exam Properties</span>
+          <Label text="Exam Properties" />
           <span />
         </SubHeading>
         <Actions
@@ -38,21 +49,18 @@ export default React.memo(
           onDownloadExam={onDownloadExam}
           onDeleteExam={onDeleteExam}
         />
-        <Properties
-          id={id}
-          title={title}
-          description={description}
-          code={code}
-          time={time}
-          pass={pass}
-          image={image}
-          cover={cover}
-          onChange={onChange}
-        />
+        <ExamProperties>
+          <Title id={id} title={title} onChange={onChange} />
+          <Description id={id} description={description} onChange={onChange} />
+          <Code id={id} code={code} onChange={onChange} />
+          <Time id={id} time={time} onChange={onChange} />
+          <Pass id={id} pass={pass} onChange={onChange} />
+          <Image id={id} image={image} onChange={onChange} />
+        </ExamProperties>
       </Center>
       <Center>
         <SubHeading>
-          <span>Cover Nodes</span>
+          <Label text="Cover" />
           <AddCover id={id} />
         </SubHeading>
         {cover.map((n, i) => (

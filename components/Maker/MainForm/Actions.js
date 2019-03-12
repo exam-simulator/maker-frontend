@@ -40,7 +40,7 @@ const Published = styled(Action)`
   color: ${props => (props.published ? props.theme.grey[10] : props.theme.grey[5])};
 `
 
-export default ({ id, published, onDownloadExam, onDeleteExam }) => (
+export default React.memo(({ id, published, onDownloadExam, onDeleteExam }) => (
   <ActionsStyles>
     <Mutation
       mutation={updateExam}
@@ -71,4 +71,4 @@ export default ({ id, published, onDownloadExam, onDeleteExam }) => (
       )}
     </Mutation>
   </ActionsStyles>
-)
+))

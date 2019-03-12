@@ -80,12 +80,13 @@ export default class ExamMaker extends React.PureComponent {
 
   onChange = ({ target: { name, value } }, updateExam) => {
     this.setState({ [name]: value })
-    this.onUpdateExam(updateExam)
+    this.onUpdateExam(updateExam, name)
   }
 
-  onUpdateExam = debounce(async updateExam => {
-    const { id, title, description, code, pass, time, image } = this.state
-    const data = { title, description, code, pass: Number(pass), time: Number(time), image }
+  onUpdateExam = debounce(async (updateExam, name) => {
+    const { id } = this.state
+    const value = this.state[name]
+    const data = { [name]: name === 'time' || name === 'pass' ? Number(value) : value }
     await updateExam({
       variables: { id, data }
     })
@@ -165,7 +166,7 @@ export default class ExamMaker extends React.PureComponent {
           ) : (
             <QuestionForm id={id} question={test[mode]} onDeleteQuestion={this.onDeleteQuestion} />
           )}
-          <Controls mode={mode} id={id} test={test} setModeState={this.setModeState} />
+          <Controls mode={mode} id={id} length={test.length} setModeState={this.setModeState} />
         </MainContent>
       </ExamMakerStyles>
     )
