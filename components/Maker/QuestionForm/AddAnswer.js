@@ -4,11 +4,11 @@ import { createNode } from '../../../apollo/mutation/createNode'
 import { examById } from '../../../apollo/query/exam'
 import ActionLoading from '../ActionLoading'
 
-export default ({ id }) => (
+export default React.memo(({ examID, questionID }) => (
   <Mutation
     mutation={createNode}
-    variables={{ id, type: 'cover' }}
-    refetchQueries={[{ query: examById, variables: { id } }]}
+    variables={{ id: questionID, type: 'choices' }}
+    refetchQueries={[{ query: examById, variables: { id: examID } }]}
   >
     {(createNode, { loading }) => (
       <span className="add" onClick={async () => await createNode()}>
@@ -16,4 +16,4 @@ export default ({ id }) => (
       </span>
     )}
   </Mutation>
-)
+))

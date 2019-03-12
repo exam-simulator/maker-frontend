@@ -6,7 +6,7 @@ import Check from './Check'
 import Text from './Text'
 import Delete from './Delete'
 
-class ChoiceInput extends React.Component {
+class ChoiceInput extends React.PureComponent {
   state = {
     id: '',
     text: '',

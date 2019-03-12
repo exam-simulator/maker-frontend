@@ -1,14 +1,13 @@
-import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown'
-import isequal from 'lodash.isequal'
 import { Mutation } from 'react-apollo'
-import { updateQuestion } from '../../apollo/mutation/updateQuestion'
-import { examById } from '../../apollo/query/exam'
-import { TypeStyles, Options, Option } from './styles/Type'
+import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown'
+import { updateQuestion } from '../../../apollo/mutation/updateQuestion'
+import { examById } from '../../../apollo/query/exam'
+import { TypeStyles, Options, Option } from '../styles/SelectType'
 
-export default class Type extends React.Component {
+export default class SelectType extends React.PureComponent {
   state = {
     show: false,
-    id: '',
+    questionID: '',
     variant: 0
   }
 
@@ -17,7 +16,7 @@ export default class Type extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!isequal(prevProps.question, this.props.question)) {
+    if (prevProps.variant !== this.props.variant) {
       this.setQuestionState()
     }
   }
@@ -27,8 +26,8 @@ export default class Type extends React.Component {
   }
 
   setQuestionState = () => {
-    const { id, variant } = this.props.question
-    this.setState({ id, variant })
+    const { questionID, variant } = this.props
+    this.setState({ questionID, variant })
   }
 
   onShow = () => {
@@ -42,10 +41,10 @@ export default class Type extends React.Component {
   }
 
   onSelect = async (updateQuestion, variant) => {
-    const { id } = this.state
+    const { questionID } = this.state
     this.setState({ variant })
     await updateQuestion({
-      variables: { id, data: { variant } }
+      variables: { id: questionID, data: { variant } }
     })
   }
 
@@ -68,7 +67,7 @@ export default class Type extends React.Component {
       state: { show, variant }
     } = this
     return (
-      <TypeStyles show={show}>
+      <TypeStyles>
         <div onClick={this.onShow}>
           <span>{this.renderVariant(variant)}</span>
           <ArrowDropDown size={15} />

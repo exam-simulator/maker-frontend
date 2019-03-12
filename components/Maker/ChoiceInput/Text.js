@@ -4,7 +4,7 @@ import { updateNode } from '../../../apollo/mutation/updateNode'
 import formatAnswerLabel from '../../../lib/formatAnswerLabel'
 import Input from '../../Shared/Input'
 
-export default ({ id, index, text, onChange }) => (
+export default React.memo(({ id, index, text, onChange }) => (
   <Mutation mutation={updateNode} refetchQueries={[{ query: examById, variables: { id } }]}>
     {(updateNode, { loading }) => (
       <Input
@@ -17,4 +17,4 @@ export default ({ id, index, text, onChange }) => (
       />
     )}
   </Mutation>
-)
+))

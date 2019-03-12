@@ -27,11 +27,12 @@ export const TypeStyles = styled.div`
   }
 `
 
-export const Options = styled.div`
+export const Options = styled.div.attrs(props => ({
+  style: { display: props.show ? 'flex' : 'none' }
+}))`
   position: absolute;
   top: 3rem;
   z-index: 1;
-  display: ${props => (props.show ? 'flex' : 'none')};
   flex-direction: column;
   border: 1px solid ${props => props.theme.grey[5]};
   border-radius: 2px;
