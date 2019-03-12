@@ -14,7 +14,7 @@ const MainContent = styled.div`
   margin: 3rem auto;
 `
 
-export default class CreateExam extends React.Component {
+export default class CreateExam extends React.PureComponent {
   state = {
     title: ''
   }

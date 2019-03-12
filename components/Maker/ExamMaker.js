@@ -19,7 +19,7 @@ const MainContent = styled.div`
   background: ${props => props.theme.white};
 `
 
-export default class ExamMaker extends React.Component {
+export default class ExamMaker extends React.PureComponent {
   state = {
     mode: -1,
     id: '',

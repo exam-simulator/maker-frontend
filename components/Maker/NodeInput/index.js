@@ -10,7 +10,7 @@ import { Delete } from 'styled-icons/material/Delete'
 import { NodeInputStyles, Option } from '../styles/NodeInput'
 import Input from '../../Shared/Input'
 
-export default class NodeInput extends React.Component {
+export default class NodeInput extends React.PureComponent {
   state = {
     variant: 0,
     text: ''

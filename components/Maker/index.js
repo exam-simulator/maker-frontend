@@ -5,7 +5,7 @@ import CreateExam from './CreateExam'
 import ExamMaker from './ExamMaker'
 import Loading from '../Shared/Loading'
 
-export default class Maker extends React.Component {
+export default class Maker extends React.PureComponent {
   state = {
     loading: true,
     create: false

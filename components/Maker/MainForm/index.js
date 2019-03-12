@@ -11,52 +11,54 @@ const MainFormStyles = styled.div`
   grid-template-columns: 40% 60%;
 `
 
-export default ({
-  id,
-  published,
-  title,
-  description,
-  code,
-  time,
-  pass,
-  image,
-  cover,
-  onChange,
-  onDownloadExam,
-  onDeleteExam
-}) => (
-  <MainFormStyles>
-    <Center>
-      <SubHeading>
-        <span>Exam Properties</span>
-        <span />
-      </SubHeading>
-      <Actions
-        id={id}
-        published={published}
-        onDownloadExam={onDownloadExam}
-        onDeleteExam={onDeleteExam}
-      />
-      <Properties
-        id={id}
-        title={title}
-        description={description}
-        code={code}
-        time={time}
-        pass={pass}
-        image={image}
-        cover={cover}
-        onChange={onChange}
-      />
-    </Center>
-    <Center>
-      <SubHeading>
-        <span>Cover Nodes</span>
-        <AddCover id={id} />
-      </SubHeading>
-      {cover.map((n, i) => (
-        <NodeInput key={n.id} type="cover" index={i} id={id} node={n} />
-      ))}
-    </Center>
-  </MainFormStyles>
+export default React.memo(
+  ({
+    id,
+    published,
+    title,
+    description,
+    code,
+    time,
+    pass,
+    image,
+    cover,
+    onChange,
+    onDownloadExam,
+    onDeleteExam
+  }) => (
+    <MainFormStyles>
+      <Center>
+        <SubHeading>
+          <span>Exam Properties</span>
+          <span />
+        </SubHeading>
+        <Actions
+          id={id}
+          published={published}
+          onDownloadExam={onDownloadExam}
+          onDeleteExam={onDeleteExam}
+        />
+        <Properties
+          id={id}
+          title={title}
+          description={description}
+          code={code}
+          time={time}
+          pass={pass}
+          image={image}
+          cover={cover}
+          onChange={onChange}
+        />
+      </Center>
+      <Center>
+        <SubHeading>
+          <span>Cover Nodes</span>
+          <AddCover id={id} />
+        </SubHeading>
+        {cover.map((n, i) => (
+          <NodeInput key={n.id} type="cover" index={i} id={id} node={n} />
+        ))}
+      </Center>
+    </MainFormStyles>
+  )
 )
