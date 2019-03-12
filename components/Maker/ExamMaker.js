@@ -94,9 +94,24 @@ export default class ExamMaker extends React.PureComponent {
 
   onDownloadExam = async updateExam => {
     const {
-      props: { id, user, title, code, time, pass, image, downloads, cover, test, createdAt }
+      props: {
+        exam: {
+          id,
+          user,
+          title,
+          description,
+          code,
+          time,
+          pass,
+          image,
+          downloads,
+          cover,
+          test,
+          createdAt
+        }
+      }
     } = this
-    const exam = {
+    const payload = {
       id,
       author: {
         id: user.id,
@@ -104,6 +119,7 @@ export default class ExamMaker extends React.PureComponent {
         image: user.image
       },
       title,
+      description,
       code,
       time: Number(time),
       pass: Number(pass),
@@ -115,7 +131,7 @@ export default class ExamMaker extends React.PureComponent {
     await updateExam({
       variables: { id, data: { downloads: downloads + 1 } }
     })
-    downloadExam(exam)
+    downloadExam(payload)
   }
 
   onDeleteExam = async deleteExam => {

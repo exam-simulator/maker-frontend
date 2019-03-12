@@ -28,7 +28,7 @@ export default class Maker extends React.PureComponent {
     } else if (query.id === 'create') {
       this.setState({ loading: false, create: true })
     } else {
-      this.setState({ loading: false })
+      this.setState({ loading: false, create: false })
     }
   }
 
