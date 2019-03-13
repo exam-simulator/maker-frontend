@@ -19,7 +19,7 @@ const MainContent = styled.div`
   background: ${props => props.theme.white};
 `
 
-export default class ExamMaker extends React.PureComponent {
+export default class ExamMaker extends React.Component {
   state = {
     mode: -1,
     id: '',
@@ -180,7 +180,20 @@ export default class ExamMaker extends React.PureComponent {
               onDeleteExam={this.onDeleteExam}
             />
           ) : (
-            <QuestionForm id={id} question={test[mode]} onDeleteQuestion={this.onDeleteQuestion} />
+            <React.Fragment>
+              {test.map((el, i) => {
+                if (i === mode) {
+                  return (
+                    <QuestionForm
+                      key={el.id}
+                      id={id}
+                      question={el}
+                      onDeleteQuestion={this.onDeleteQuestion}
+                    />
+                  )
+                }
+              })}
+            </React.Fragment>
           )}
           <Controls mode={mode} id={id} length={test.length} setModeState={this.setModeState} />
         </MainContent>
