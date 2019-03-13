@@ -4,7 +4,7 @@ import { updateQuestion } from '../../../apollo/mutation/updateQuestion'
 import { examById } from '../../../apollo/query/exam'
 import { TypeStyles, Options, Option } from '../styles/SelectType'
 
-export default class SelectType extends React.PureComponent {
+export default class SelectType extends React.Component {
   state = {
     show: false,
     questionID: '',
@@ -42,7 +42,7 @@ export default class SelectType extends React.PureComponent {
 
   onSelect = async (updateQuestion, variant) => {
     const { questionID } = this.state
-    // this.setState({ variant })
+    this.setState({ variant })
     await updateQuestion({
       variables: { id: questionID, data: { variant } }
     })
