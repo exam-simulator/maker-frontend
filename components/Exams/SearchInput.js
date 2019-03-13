@@ -13,7 +13,7 @@ export default ({ term, onChange, onKeyDown }) => (
     <Input
       type="input"
       width={300}
-      label="Search..."
+      label="Search Term"
       value={term}
       onChange={onChange}
       inputProps={{ name: 'term', spellCheck: false, onKeyDown }}

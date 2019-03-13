@@ -26,9 +26,21 @@ const MainContent = styled.div`
   }
 `
 
+const NoResults = styled.div`
+  display: grid;
+  justify-items: center;
+  & > :first-child {
+    font: 2rem 'Open Sans Semi';
+    color: ${props => props.theme.grey[10]};
+    background: ${props => props.theme.grey[1]};
+    border: 1px solid ${props => props.theme.grey[5]};
+    padding: 1rem;
+  }
+`
+
 class Exams extends React.Component {
   state = {
-    loading: true,
+    loading: false,
     exams: [],
     term: '',
     first: 10,
@@ -36,7 +48,7 @@ class Exams extends React.Component {
   }
 
   componentDidMount() {
-    this.getExams()
+    // this.getExams()
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -66,7 +78,7 @@ class Exams extends React.Component {
 
   onTermChange = debounce(async () => {
     await this.getExams()
-  }, 5000)
+  }, 2000)
 
   onKeyDown = ({ keyCode }) => {
     if (keyCode === 13) {
@@ -141,7 +153,9 @@ class Exams extends React.Component {
               <Pagination count={count} skip={skip} first={first} onPaginate={this.onPaginate} />
             </React.Fragment>
           ) : (
-            <div>No results</div>
+            <NoResults>
+              <div>No Results</div>
+            </NoResults>
           )}
         </MainContent>
       </ExamsStyles>

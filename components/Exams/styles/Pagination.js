@@ -27,7 +27,7 @@ export const PaginationStyles = styled.div`
       color: ${props => (props.firstPage ? props.theme.grey[5] : props.theme.grey[10])};
       background: ${props =>
         props.firstPage ? props.theme.grey[0] : lighten(0.1, props.theme.primary)};
-      border-bottom: 1px solid transparent};
+      border-bottom: 1px solid transparent;
       transition: 0.3s;
       &:hover {
         background: ${props => (props.firstPage ? props.theme.grey[0] : props.theme.primary)};
