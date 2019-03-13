@@ -15,7 +15,7 @@ const QuestionFormStyles = styled.div`
   grid-template-columns: 60% 40%;
 `
 
-export default React.memo(({ id, question, onDeleteQuestion }) => (
+export default ({ id, question, onDeleteQuestion }) => (
   <QuestionFormStyles>
     <Center>
       <SubHeading>
@@ -60,4 +60,4 @@ export default React.memo(({ id, question, onDeleteQuestion }) => (
       </SubHeading>
     </Center>
   </QuestionFormStyles>
-))
+)

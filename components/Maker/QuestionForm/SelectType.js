@@ -75,6 +75,7 @@ export default class SelectType extends React.Component {
         <Mutation
           mutation={updateQuestion}
           refetchQueries={[{ query: examById, variables: { id } }]}
+          awaitRefetchQueries={true}
         >
           {(updateQuestion, { loading }) => (
             <Options show={show}>
