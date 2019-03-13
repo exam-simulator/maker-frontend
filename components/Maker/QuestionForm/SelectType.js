@@ -42,7 +42,7 @@ export default class SelectType extends React.PureComponent {
 
   onSelect = async (updateQuestion, variant) => {
     const { questionID } = this.state
-    this.setState({ variant })
+    // this.setState({ variant })
     await updateQuestion({
       variables: { id: questionID, data: { variant } }
     })
