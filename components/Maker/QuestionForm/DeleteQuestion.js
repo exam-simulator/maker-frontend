@@ -2,7 +2,7 @@ import { Mutation } from 'react-apollo'
 import { Delete } from 'styled-icons/material/Delete'
 import { deleteQuestion } from '../../../apollo/mutation/deleteQuestion'
 import { examById } from '../../../apollo/query/exam'
-import { Action } from '../MainForm/Actions'
+import { Action } from '../MainForm/Actions/styles'
 import ActionLoading from '../ActionLoading'
 
 export default React.memo(({ examID, questionID, onClick }) => (

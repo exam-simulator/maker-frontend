@@ -5,6 +5,9 @@ export const examsByUser = gql`
     exams(where: { user: { id: $id } }, orderBy: $orderBy, skip: $skip, first: $first) {
       exams {
         id
+        published
+        verified
+        verificationPending
         title
         description
         code

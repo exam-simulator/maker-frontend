@@ -24,6 +24,8 @@ export default class ExamMaker extends React.Component {
     mode: -1,
     id: '',
     published: false,
+    verified: false,
+    verificationPending: false,
     title: '',
     description: '',
     code: '',
@@ -45,36 +47,7 @@ export default class ExamMaker extends React.Component {
     }
   }
 
-  setExamState = () => {
-    const {
-      id,
-      published,
-      title,
-      description,
-      code,
-      pass,
-      time,
-      image,
-      downloads,
-      cover,
-      test,
-      createdAt
-    } = this.props.exam
-    this.setState({
-      id,
-      published,
-      title,
-      description,
-      code,
-      pass,
-      time,
-      image,
-      downloads,
-      cover,
-      test,
-      createdAt
-    })
-  }
+  setExamState = () => this.setState({ ...this.props.exam })
 
   setModeState = mode => this.setState({ mode })
 
@@ -159,15 +132,33 @@ export default class ExamMaker extends React.Component {
 
   render() {
     const {
-      state: { id, published, mode, title, description, code, time, pass, image, cover, test }
+      props: { user },
+      state: {
+        id,
+        published,
+        verified,
+        verificationPending,
+        mode,
+        title,
+        description,
+        code,
+        time,
+        pass,
+        image,
+        cover,
+        test
+      }
     } = this
     return (
       <ExamMakerStyles>
         <MainContent>
           {mode === -1 ? (
             <MainForm
+              user={user}
               id={id}
               published={published}
+              verified={verified}
+              verificationPending={verificationPending}
               title={title}
               description={description}
               code={code}

@@ -44,7 +44,7 @@ export default class Maker extends React.PureComponent {
       return <Loading size={50} />
     }
     if (create) {
-      return <CreateExam />
+      return <CreateExam user={user} />
     }
     return (
       <Query query={examById} variables={{ id }}>
@@ -55,7 +55,7 @@ export default class Maker extends React.PureComponent {
           if (exam.user.id !== user.id) {
             return Router.push('/')
           }
-          return <ExamMaker exam={exam} />
+          return <ExamMaker exam={exam} user={user} />
         }}
       </Query>
     )

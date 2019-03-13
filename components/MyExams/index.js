@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { examsByUser } from '../../apollo/query/examsByUser'
 import { BannerTop, BannerTitle } from '../Shared/Banner'
 import ExamCard from '../Exams/ExamCard'
+import Loading from '../Shared/Loading'
 
 const MainContent = styled.div`
   width: ${props => props.theme.maxWidth};
@@ -20,7 +21,9 @@ const MainContent = styled.div`
 export default React.memo(({ user }) => (
   <Query query={examsByUser} variables={{ id: user.id }}>
     {({ data, loading, error }) => {
-      if (loading) return
+      if (loading) {
+        return <Loading size={50} />
+      }
       const { exams } = data.exams
       return (
         <div>

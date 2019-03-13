@@ -24,8 +24,11 @@ const ExamProperties = styled.div`
 
 export default React.memo(
   ({
+    user,
     id,
     published,
+    verified,
+    verificationPending,
     title,
     description,
     code,
@@ -44,8 +47,11 @@ export default React.memo(
           <span />
         </SubHeading>
         <Actions
+          user={user}
           id={id}
           published={published}
+          verified={verified}
+          verificationPending={verificationPending}
           onDownloadExam={onDownloadExam}
           onDeleteExam={onDeleteExam}
         />

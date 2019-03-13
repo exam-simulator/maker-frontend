@@ -5,6 +5,8 @@ export const examById = gql`
     exam(id: $id) {
       id
       published
+      verified
+      verificationPending
       title
       description
       code

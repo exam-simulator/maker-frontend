@@ -13,7 +13,8 @@ export default ({ term, onChange, onKeyDown }) => (
     <Input
       type="input"
       width={300}
-      label="Search Term"
+      label="Search..."
+      hint="Verified exams only"
       value={term}
       onChange={onChange}
       inputProps={{ name: 'term', spellCheck: false, onKeyDown }}
