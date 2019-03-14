@@ -21,15 +21,7 @@ export default ({ exam, edit, onEdit, onDownloadExam }) => (
       <span className="stat">Questions: {exam.test.length}</span>
       <span className="stat">Downloads: {exam.downloads}</span>
       <div className="meta">
-        <span className="date">Created {formatAgo(exam.createdAt)} ago &nbsp;&bull;&nbsp;</span>
-        {exam.user.homepage ? (
-          <a href={exam.user.homepage} className="name-red">
-            {exam.user.name}
-          </a>
-        ) : (
-          <div className="name">{exam.user.name}</div>
-        )}
-        <img className="avatar" src={exam.user.image} />
+        <span className="date">Created {formatAgo(exam.createdAt)} ago </span>
       </div>
     </div>
     <div className="actions" onClick={onDownloadExam}>

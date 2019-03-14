@@ -4,6 +4,7 @@ export default {
   borderRadius: '3px',
   primary: '#FFF28F',
   secondary: '#DE4545',
+  tertiary: '#7AFF6B',
   grey: [
     '#FAFAFA',
     '#F0F0F0',

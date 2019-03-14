@@ -8,7 +8,7 @@ import ActionLoading from '../../ActionLoading'
 export default ({ id, onDownloadExam }) => (
   <Mutation mutation={updateExam} refetchQueries={[{ query: examById, variables: { id } }]}>
     {(updateExam, { loading }) => (
-      <Action onClick={() => onDownloadExam(updateExam)}>
+      <Action title="Download as JSON" onClick={() => onDownloadExam(updateExam)}>
         {loading ? <ActionLoading size={2} /> : <FileDownload size={20} />}
       </Action>
     )}

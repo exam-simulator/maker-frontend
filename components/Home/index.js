@@ -58,9 +58,7 @@ export default () => (
           <p>For developers, by developers.</p>
         </TagLine>
         <ReadMoreButton
-          onClick={() =>
-            window.open('https://github.com/exam-simulator/simulator/releases', '_blank')
-          }
+          onClick={() => window.open('https://exam-simulator.gitbook.io/exam-simulator', '_blank')}
         >
           read more
         </ReadMoreButton>
@@ -84,7 +82,9 @@ export default () => (
           heading="Exam Simulator"
           text="Exam Simulator is a free and open source simulator and is available for Windows and MacOS."
           buttonText="download"
-          onClick={() => window.open('https://exam-simulator.gitbook.io/exam-simulator', '_blank')}
+          onClick={() =>
+            window.open('https://github.com/exam-simulator/simulator/releases', '_blank')
+          }
         />
       </BannerBottom>
     </div>

@@ -11,7 +11,7 @@ export default ({ user, onDeleteExam }) => (
     refetchQueries={[{ query: examsByUser, variables: { id: user.id } }]}
   >
     {(deleteExam, { loading }) => (
-      <Action onClick={() => onDeleteExam(deleteExam)}>
+      <Action title="Delete Exam" onClick={() => onDeleteExam(deleteExam)}>
         {loading ? <ActionLoading size={2} /> : <Delete size={20} />}
       </Action>
     )}

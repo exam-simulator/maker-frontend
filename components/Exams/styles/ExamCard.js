@@ -3,7 +3,7 @@ import { darken } from 'polished'
 
 function highlight() {
   return css`
-    font: 0.75rem 'Open Sans Semi';
+    font: 1rem 'Open Sans Semi';
     text-transform: uppercase;
     color: ${props => props.theme.grey[5]};
     border: 1px solid ${props => props.theme.grey[2]};
@@ -31,11 +31,11 @@ export const ExamCardStyles = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 1rem;
     ${highlight()}
     &:hover {
       color: ${props => props.theme.grey[10]};
-      border: 1px solid ${props => props.theme.grey[10]};
+      border: 1px solid ${props => props.theme.grey[5]};
     }
     & > :first-child {
       margin-right: 0.5rem;

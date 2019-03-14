@@ -9,11 +9,13 @@ const ActionsStyles = styled.div`
   margin-bottom: 4rem;
 `
 
-export default React.memo(({ user, id, published, onDownloadExam, onDeleteExam }) => (
-  <ActionsStyles>
-    <Published id={id} published={published} />
-    <Verified />
-    <Download id={id} onDownloadExam={onDownloadExam} />
-    <Delete user={user} onDeleteExam={onDeleteExam} />
-  </ActionsStyles>
-))
+export default React.memo(
+  ({ user, id, published, verified, verificationPending, onDownloadExam, onDeleteExam }) => (
+    <ActionsStyles>
+      <Published id={id} published={published} />
+      <Verified id={id} verified={verified} verificationPending={verificationPending} />
+      <Download id={id} onDownloadExam={onDownloadExam} />
+      <Delete user={user} onDeleteExam={onDeleteExam} />
+    </ActionsStyles>
+  )
+)
