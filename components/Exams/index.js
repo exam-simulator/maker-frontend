@@ -61,9 +61,15 @@ class Exams extends React.Component {
       props: { client },
       state: { term, skip, first, onlyVerified }
     } = this
+    const termInitCap = term
+      ? term
+          .split(' ')
+          .map(el => el[0].toUpperCase() + el.slice(1))
+          .join(' ')
+      : ''
     const res = await client.query({
       query: examsByTerm,
-      variables: { term, skip, first, onlyVerified }
+      variables: { term, termInitCap, skip, first, onlyVerified }
     })
     const { exams, count } = res.data.exams
     this.setState({ loading: false, exams, count })

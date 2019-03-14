@@ -3,7 +3,8 @@ import gql from 'graphql-tag'
 export const examsByTerm = gql`
   query ExamsByTerm(
     $term: String
-    $onlyVerified: Boolean = true
+    $termInitCap: String
+    $onlyVerified: Boolean
     $orderBy: ExamOrderByInput = createdAt_DESC
     $first: Int = 10
     $skip: Int = 0
@@ -12,12 +13,14 @@ export const examsByTerm = gql`
       where: {
         AND: [
           { published: true }
-          { verified: $onlyVerified }
           {
             OR: [
               { title_contains: $term }
               { description_contains: $term }
+              { title_contains: $termInitCap }
+              { description_contains: $termInitCap }
               { code_contains: $term }
+              { code_contains: $termInitCap }
             ]
           }
         ]
@@ -25,6 +28,7 @@ export const examsByTerm = gql`
       orderBy: $orderBy
       first: $first
       skip: $skip
+      onlyVerified: $onlyVerified
     ) {
       exams {
         id
