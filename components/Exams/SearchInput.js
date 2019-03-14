@@ -12,6 +12,10 @@ const SearchInputStyles = styled.div`
     align-items: center;
     font: 1rem 'Open Sans Semi';
     margin-top: -3rem;
+    cursor: pointer;
+    span {
+      user-select: none;
+    }
   }
 `
 
@@ -27,7 +31,7 @@ export default ({ term, onlyVerified, onChange, onCheckChange, onKeyDown }) => (
     />
     <div className="checkbox">
       <input type="checkbox" checked={onlyVerified} onChange={onCheckChange} />
-      <span>Only Search Verified Exams</span>
+      <span onClick={onCheckChange}>Only Search Verified Exams</span>
     </div>
   </SearchInputStyles>
 )

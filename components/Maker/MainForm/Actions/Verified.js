@@ -36,7 +36,7 @@ export default ({ id, verified, verificationPending }) => (
         }
         verified={verified}
         verificationPending={verificationPending}
-        onClick={requestVerification}
+        onClick={!verified && !verificationPending ? requestVerification : null}
       >
         {loading ? (
           <ActionLoading size={1.5} />

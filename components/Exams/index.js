@@ -35,6 +35,7 @@ const NoResults = styled.div`
     color: ${props => props.theme.grey[10]};
     background: ${props => props.theme.grey[1]};
     border: 1px solid ${props => props.theme.grey[5]};
+    border-radius: ${props => props.theme.borderRadius};
     padding: 1rem;
   }
 `
