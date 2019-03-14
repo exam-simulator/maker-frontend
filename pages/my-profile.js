@@ -1,5 +1,5 @@
 import MyProfile from '../components/MyProfile'
-import PleaseSignIn from '../components/Page/PleaseSignIn'
+import PleaseSignIn from '../components/Shared/PleaseSignIn'
 
 export default props => (
   <PleaseSignIn>

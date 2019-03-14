@@ -1,9 +1,10 @@
 import { Query } from 'react-apollo'
 import { me } from '../../apollo/query/me'
 import SigninModal from '../Header/SigninModal'
-import Loading from '../Shared/Loading'
+import Home from '../Home'
+import Loading from './Loading'
 
-export default class PleaseSignIn extends React.Component {
+export default class AdminOnly extends React.Component {
   state = {
     showModal: true
   }
@@ -23,6 +24,9 @@ export default class PleaseSignIn extends React.Component {
           if (loading) return <Loading size={50} />
           if (!data.me) {
             return <SigninModal show={showModal} onClose={this.onCloseModal} />
+          }
+          if (data.me.role !== 'ADMIN') {
+            return <Home />
           }
           return children
         }}

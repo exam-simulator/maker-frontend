@@ -54,7 +54,11 @@ export default class Schema extends React.Component {
                 <div className="content">
                   The easiest way to create an exam is to use the online editor on this site. You
                   can also create an exam with any text editor so long as it complies with the JSON
-                  schema outlined on this page. For more information, check out the Documentation.
+                  schema outlined on this page. For more information, check out the{' '}
+                  <a href="https://exam-simulator.gitbook.io/exam-simulator" target="_blank">
+                    Documentation
+                  </a>
+                  .
                 </div>
               }
             />
