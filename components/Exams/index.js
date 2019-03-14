@@ -29,6 +29,7 @@ const MainContent = styled.div`
 const NoResults = styled.div`
   display: grid;
   justify-items: center;
+  margin-top: 5rem;
   & > :first-child {
     font: 2rem 'Open Sans Semi';
     color: ${props => props.theme.grey[10]};
@@ -44,11 +45,8 @@ class Exams extends React.Component {
     exams: [],
     term: '',
     first: 10,
-    skip: 0
-  }
-
-  componentDidMount() {
-    // this.getExams()
+    skip: 0,
+    onlyVerified: true
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -61,11 +59,11 @@ class Exams extends React.Component {
     await this.setState({ loading: true })
     const {
       props: { client },
-      state: { term, skip, first }
+      state: { term, skip, first, onlyVerified }
     } = this
     const res = await client.query({
       query: examsByTerm,
-      variables: { term, skip, first }
+      variables: { term, skip, first, onlyVerified }
     })
     const { exams, count } = res.data.exams
     this.setState({ loading: false, exams, count })
@@ -85,6 +83,8 @@ class Exams extends React.Component {
       this.getExams()
     }
   }
+
+  onCheckChange = () => this.setState(({ onlyVerified }) => ({ onlyVerified: !onlyVerified }))
 
   onPaginate = next => {
     const { count, skip, first } = this.state
@@ -124,7 +124,7 @@ class Exams extends React.Component {
 
   render() {
     const {
-      state: { loading, exams, count, term, skip, first }
+      state: { loading, exams, count, term, skip, first, onlyVerified }
     } = this
     return (
       <ExamsStyles>
@@ -132,7 +132,13 @@ class Exams extends React.Component {
           <BannerTitle>Exams</BannerTitle>
         </BannerTop>
         <MainContent>
-          <SearchInput term={term} onChange={this.onChange} onKeyDown={this.onKeyDown} />
+          <SearchInput
+            term={term}
+            onlyVerified={onlyVerified}
+            onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
+            onCheckChange={this.onCheckChange}
+          />
           {loading ? (
             <Loading size={50} />
           ) : exams.length ? (

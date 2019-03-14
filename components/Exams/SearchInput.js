@@ -2,22 +2,32 @@ import styled from 'styled-components'
 import Input from '../Shared/Input'
 
 const SearchInputStyles = styled.div`
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 5rem;
+  .checkbox {
+    display: flex;
+    align-items: center;
+    font: 1rem 'Open Sans Semi';
+    margin-top: -3rem;
+  }
 `
 
-export default ({ term, onChange, onKeyDown }) => (
+export default ({ term, onlyVerified, onChange, onCheckChange, onKeyDown }) => (
   <SearchInputStyles>
     <Input
       type="input"
       width={300}
       label="Search..."
-      hint="Verified exams only"
       value={term}
       onChange={onChange}
       inputProps={{ name: 'term', spellCheck: false, onKeyDown }}
     />
+    <div className="checkbox">
+      <input type="checkbox" checked={onlyVerified} onChange={onCheckChange} />
+      <span>Only Search Verified Exams</span>
+    </div>
   </SearchInputStyles>
 )
