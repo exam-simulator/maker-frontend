@@ -15,9 +15,6 @@ export default ({ user, onShowModal }) => (
         <Link href="/schema">
           <HeaderLink>Schema</HeaderLink>
         </Link>
-        <Link href="/exams">
-          <HeaderLink>Exams</HeaderLink>
-        </Link>
         <Signin user={user} onClick={onShowModal} />
       </div>
     </div>

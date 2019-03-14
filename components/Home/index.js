@@ -73,10 +73,10 @@ export default () => (
           onClick={() => Router.push('/maker?id=create')}
         />
         <Card
-          heading="Exam Database"
-          text="Browse our catalog of free exams made by the community or create an exam yourself."
+          heading="How it Works"
+          text="Instead of VCE files, this testing platform is build using JSON, or JavaScript Object Notation."
           buttonText="view exams"
-          onClick={() => Router.push('/exams')}
+          onClick={() => window.open('https://exam-simulator.gitbook.io/exam-simulator', '_blank')}
         />
         <Card
           heading="Exam Simulator"
