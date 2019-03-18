@@ -1,34 +1,6 @@
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { GreyButton } from '../Shared/GreyButton'
-
-export const HeaderStyles = styled.header`
-  height: 6rem;
-  background: ${props => props.theme.primary};
-  & > :first-child {
-    max-width: ${props => props.theme.maxWidth};
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    font: 1.4rem 'Open Sans Semi';
-    .links {
-      display: flex;
-      align-items: center;
-    }
-  }
-`
-
-export const HeaderLink = styled.a`
-  font: 1.4rem 'Open Sans Semi';
-  padding-left: 3rem;
-  transition: 0.1s;
-  cursor: pointer;
-  &:hover {
-    color: ${props => props.theme.secondary};
-  }
-`
+import { GreyButton } from '../../Shared/GreyButton'
 
 export const SigninModalStyles = styled.div`
   position: relative;
@@ -129,18 +101,5 @@ export const GoogleButton = styled.div`
     color: inherit;
     text-transform: uppercase;
     font: 1.2rem 'Open Sans Semi';
-  }
-`
-
-export const AvatarStyles = styled.div`
-  position: relative;
-  img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    background: ${props => props.theme.grey[0]};
-    margin-left: 3rem;
-    cursor: pointer;
   }
 `

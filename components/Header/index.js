@@ -1,12 +1,13 @@
 import Link from 'next/link'
-import { HeaderStyles, HeaderLink } from './styles'
+import { HeaderStyles, HeaderLink } from './styles/Header'
 import Signin from './Signin'
+import { logoURL } from '../../config'
 
 export default ({ user, onShowModal }) => (
   <HeaderStyles>
     <div>
       <Link href="/">
-        <HeaderLink>Exam Maker</HeaderLink>
+        <img className="logo" src={logoURL} />
       </Link>
       <div className="links">
         <Link href="/maker?id=create">

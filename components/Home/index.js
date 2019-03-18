@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import Router from 'next/router'
 import Card from './Card'
 import { RedButton } from '../Shared/RedButton'
+import Media from '../Page/Media'
 
 const HomeStyles = styled.div`
   height: calc(100vh - 6rem);
   display: grid;
-  grid-template-rows: 66% 34%;
+  grid-template-rows: 66% 1fr;
   .yellow {
     background: ${props => props.theme.primary};
   }
@@ -34,6 +35,9 @@ const TagLine = styled.div`
   font: 1.3rem 'Open Sans';
   text-align: center;
   margin-bottom: 4rem;
+  ${Media.phone`
+    padding: 0 1rem;
+  `}
 `
 const ReadMoreButton = styled(RedButton)`
   align-self: flex-start;
@@ -46,6 +50,12 @@ const BannerBottom = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  background: ${props => props.theme.grey[0]};
+  ${Media.tablet`
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;  
+    justify-items: center;
+  `};
 `
 
 export default () => (

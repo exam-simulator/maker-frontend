@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 import { GreyButton } from '../Shared/GreyButton'
+import Media from '../Page/Media'
 
 const CardStyles = styled.div`
   max-width: 300px;
   display: grid;
   grid-template-rows: 1fr 1fr auto;
   justify-items: center;
+  ${Media.tablet`
+    margin: 2rem auto;
+  `}
 `
 
 const Heading = styled.div`

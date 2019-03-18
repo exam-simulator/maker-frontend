@@ -1,4 +1,4 @@
-import { AvatarStyles } from './styles'
+import { AvatarStyles } from './styles/Avatar'
 import UserMenu from '../UserMenu'
 
 export default class Avatar extends React.Component {

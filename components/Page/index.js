@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import theme from './theme'
+import theme from './Theme'
 import GlobalStyle from './GlobalStyle'
 import Meta from './Meta'
 import Header from '../Header'

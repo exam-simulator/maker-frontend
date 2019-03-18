@@ -1,4 +1,4 @@
-import { HeaderLink } from './styles'
+import { HeaderLink } from './styles/Header'
 import Avatar from './Avatar'
 
 export default ({ user, onClick }) => {
