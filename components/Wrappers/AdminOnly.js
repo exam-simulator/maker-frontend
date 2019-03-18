@@ -2,7 +2,7 @@ import { Query } from 'react-apollo'
 import { me } from '../../apollo/query/me'
 import SigninModal from '../Header/SigninModal'
 import Home from '../Home'
-import Loading from './Loading'
+import Loading from '../Shared/Loading'
 
 export default class AdminOnly extends React.Component {
   state = {

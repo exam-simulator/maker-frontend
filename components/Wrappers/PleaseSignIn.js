@@ -1,7 +1,7 @@
 import { Query } from 'react-apollo'
 import { me } from '../../apollo/query/me'
 import SigninModal from '../Header/SigninModal'
-import Loading from './Loading'
+import Loading from '../Shared/Loading'
 
 export default class PleaseSignIn extends React.Component {
   state = {

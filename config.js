@@ -2,10 +2,6 @@ export const endpointHttp =
   process.env.NODE_ENV === 'production'
     ? 'https://exam-maker-backend.herokuapp.com/graphql'
     : 'http://localhost:8081/graphql'
-export const endpointWs =
-  process.env.NODE_ENV === 'production'
-    ? 'wss://exam-maker-backend.herokuapp.com/graphql'
-    : 'ws://localhost:8081/graphql'
 export const frontend =
   process.env.NODE_ENV === 'production'
     ? 'https://exam-maker.herokuapp.com'

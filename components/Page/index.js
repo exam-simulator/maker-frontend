@@ -5,7 +5,7 @@ import theme from './theme'
 import GlobalStyle from './GlobalStyle'
 import Meta from './Meta'
 import Header from '../Header'
-import User from './User'
+import User from '../Wrappers/User'
 import SigninModal from '../Header/SigninModal'
 import Loading from '../Shared/Loading'
 

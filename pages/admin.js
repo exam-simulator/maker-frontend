@@ -1,4 +1,4 @@
-import AdminOnly from '../components/Shared/AdminOnly'
+import AdminOnly from '../components/Wrappers/AdminOnly'
 import Admin from '../components/Admin'
 
 export default props => (

@@ -71,9 +71,10 @@ export default class Input extends React.Component {
             onBlur={this.onBlur}
           />
         )}
-        <div className="underline">
-          <Underline focus={focus} />
-        </div>
+        <Underline focus={focus}>
+          <div />
+          <div />
+        </Underline>
         <Hint show={Boolean(hint)} focus={focus}>
           {hint}
         </Hint>
