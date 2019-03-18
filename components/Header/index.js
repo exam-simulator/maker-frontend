@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { HeaderStyles, HeaderLink } from './styles/Header'
-import Signin from './Signin'
+import Avatar from './Avatar'
 import { logoURL } from '../../config'
 
 export default ({ user, onShowModal }) => (
@@ -19,7 +19,7 @@ export default ({ user, onShowModal }) => (
         <Link href="/exams">
           <HeaderLink>Exams</HeaderLink>
         </Link>
-        <Signin user={user} onClick={onShowModal} />
+        {user ? <Avatar user={user} /> : <HeaderLink onClick={onShowModal}>Sign up</HeaderLink>}
       </div>
     </div>
   </HeaderStyles>

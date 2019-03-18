@@ -1,16 +1,23 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 import PropTypes from 'prop-types'
 
 const ErrorMessageStyles = styled.div`
-  background: ${props => props.theme.grey[0]};
-  color: ${props => props.theme.grey[10]};
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  background: white;
+  color: ${props => darken(0.1, props.theme.secondary)};
   padding: 1rem;
   border-left: 5px solid ${props => props.theme.secondary};
-  margin-top: 1rem;
-  box-shadow: ${props => props.theme.shadows[1]};
+  border-radius: ${props => props.theme.borderRadius};
+  box-shadow: ${props => props.theme.shadows[5]};
+  margin-top: -1rem;
+  margin-bottom: 1rem;
   p {
     margin: 0;
-    font: 1.2rem 'Open Sans Semi';
+    text-transform: uppercase;
+    font: 1rem 'Open Sans Bold';
   }
 `
 

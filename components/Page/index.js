@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import theme from './Theme'
@@ -8,10 +8,6 @@ import Header from '../Header'
 import User from '../Wrappers/User'
 import SigninModal from '../Header/SigninModal'
 import Loading from '../Shared/Loading'
-
-const PageStyles = styled.div``
-
-const Main = styled.main``
 
 export default class Page extends React.Component {
   state = {
@@ -43,19 +39,19 @@ export default class Page extends React.Component {
           {({ loading, data }) => {
             if (loading) return <Loading size={50} />
             return (
-              <PageStyles>
+              <div>
                 <Meta pathname={pathname} />
                 <GlobalStyle />
                 <Header user={data.me} onShowModal={this.onShowModal} />
-                <Main>
+                <main>
                   {React.Children.map(this.props.children, child =>
                     React.cloneElement(child, {
                       user: data.me
                     })
                   )}
-                </Main>
+                </main>
                 <SigninModal show={showModal} onClose={this.onCloseModal} />
-              </PageStyles>
+              </div>
             )
           }}
         </User>

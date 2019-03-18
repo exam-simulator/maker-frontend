@@ -21,7 +21,6 @@ export const SigninModalStyles = styled.div`
       }
       button {
         width: 100%;
-        margin-top: -1rem;
       }
       .toggle {
         font: 1.2rem 'Open Sans Semi';
@@ -34,24 +33,6 @@ export const SigninModalStyles = styled.div`
         &:hover {
           color: ${props => props.theme.grey[10]};
         }
-      }
-    }
-    .divider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1rem auto;
-      & > :first-child,
-      & > :last-child {
-        width: 33%;
-        height: 2px;
-        background: ${props => props.theme.grey[8]};
-      }
-      .middle {
-        color: ${props => props.theme.grey[8]};
-        font: 1.5rem 'Open Sans Bold';
-        text-transform: uppercase;
-        padding: 0 0.5rem;
       }
     }
   }
@@ -73,6 +54,25 @@ export const DarkGreyButton = styled(GreyButton)`
     background: ${props => props.theme.grey[0]};
     color: ${props => props.theme.grey[8]};
     border: 2px solid ${props => props.theme.grey[8]};
+  }
+`
+
+export const Divider = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  & > :first-child,
+  & > :last-child {
+    width: 33%;
+    height: 2px;
+    background: ${props => props.theme.grey[8]};
+  }
+  .middle {
+    color: ${props => props.theme.grey[8]};
+    font: 1.5rem 'Open Sans Bold';
+    text-transform: uppercase;
+    padding: 0 0.5rem;
   }
 `
 

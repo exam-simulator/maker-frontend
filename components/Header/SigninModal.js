@@ -2,7 +2,7 @@ import { withApollo, Mutation } from 'react-apollo'
 import { GoogleLogin } from 'react-google-login'
 import { Google } from 'styled-icons/boxicons-logos/Google'
 import { Close } from 'styled-icons/material/Close'
-import { SigninModalStyles, GoogleButton, DarkGreyButton } from './styles/SigninModal'
+import { SigninModalStyles, GoogleButton, DarkGreyButton, Divider } from './styles/SigninModal'
 import { googleClientID, logoURL } from '../../config'
 import { googleSignin } from '../../apollo/mutation/googleSignin'
 import { me } from '../../apollo/query/me'
@@ -127,8 +127,8 @@ class SigninModal extends React.Component {
                 <Mutation mutation={signup} refetchQueries={[{ query: me }]}>
                   {(signup, { loading, error }) => (
                     <>
-                      <DarkGreyButton onClick={() => this.onSignup(signup)}>Sign up</DarkGreyButton>
                       <ErrorMessage error={error} />
+                      <DarkGreyButton onClick={() => this.onSignup(signup)}>Sign up</DarkGreyButton>
                     </>
                   )}
                 </Mutation>
@@ -136,18 +136,18 @@ class SigninModal extends React.Component {
                 <Mutation mutation={signin} refetchQueries={[{ query: me }]}>
                   {(signin, { loading, error }) => (
                     <>
-                      <DarkGreyButton onClick={() => this.onSignin(signin)}>Sign in</DarkGreyButton>
                       <ErrorMessage error={error} />
+                      <DarkGreyButton onClick={() => this.onSignin(signin)}>Sign in</DarkGreyButton>
                     </>
                   )}
                 </Mutation>
               )}
             </div>
-            <div className="divider">
+            <Divider>
               <span />
               <span className="middle">or</span>
               <span />
-            </div>
+            </Divider>
             <GoogleLogin
               clientId={googleClientID}
               onSuccess={this.onSuccess}
