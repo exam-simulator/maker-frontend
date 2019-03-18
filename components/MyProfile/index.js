@@ -12,7 +12,7 @@ import Input from '../Shared/Input'
 import formatFilename from '../../lib/formatFilename'
 
 const MainContent = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   margin: 3rem auto;
   background: ${props => props.theme.white};
 `

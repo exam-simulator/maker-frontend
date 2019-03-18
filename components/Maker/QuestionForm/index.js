@@ -9,10 +9,15 @@ import AddQuestion from './AddQuestion'
 import AddExplanation from './AddExplanation'
 import AddAnswer from './AddAnswer'
 import DeleteQuestion from './DeleteQuestion'
+import Media from '../../Page/Media'
 
 const QuestionFormStyles = styled.div`
   display: grid;
   grid-template-columns: 60% 40%;
+  ${Media.tablet`
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  `};
 `
 
 export default ({ id, question, onDeleteQuestion }) => (

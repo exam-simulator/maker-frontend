@@ -13,7 +13,7 @@ const ExamMakerStyles = styled.div`
 `
 
 const MainContent = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   height: calc(100vh - 6rem);
   margin: 0 auto;
   background: ${props => props.theme.white};

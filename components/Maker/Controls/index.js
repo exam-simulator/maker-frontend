@@ -1,7 +1,7 @@
 import { Tune } from 'styled-icons/material/Tune'
 import { KeyboardArrowLeft } from 'styled-icons/material/KeyboardArrowLeft'
 import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight'
-import { ControlsStyles, Box, ArrowBox } from '../styles/Controls'
+import { ControlsStyles, Box, ArrowBox } from './styles'
 import AddQuestion from './AddQuestion'
 
 export default class Controls extends React.PureComponent {

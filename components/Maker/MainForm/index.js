@@ -11,10 +11,15 @@ import Code from './Code'
 import Time from './Time'
 import Pass from './Pass'
 import Image from './Image'
+import Media from '../../Page/Media'
 
 const MainFormStyles = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
+  ${Media.tablet`
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  `};
 `
 
 const ExamProperties = styled.div`
