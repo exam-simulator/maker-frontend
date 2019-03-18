@@ -10,7 +10,7 @@ import Input from '../Shared/Input'
 const CreateExamStyles = styled.div``
 
 const MainContent = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   margin: 3rem auto;
   .create {
     display: flex;

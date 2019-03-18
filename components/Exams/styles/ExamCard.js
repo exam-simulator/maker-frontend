@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { darken } from 'polished'
+import Media from '../../Page/Media'
 
 function highlight() {
   return css`
@@ -24,6 +25,13 @@ export const ExamCardStyles = styled.div`
   border: 1px solid ${props => props.theme.grey[2]};
   border-radius: ${props => props.theme.borderRadius};
   margin-bottom: 2rem;
+  ${Media.phone`
+    width: 30rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 2rem;
+    justify-items: center;  
+    grid-gap: 1rem;
+  `};
   .edit {
     position: absolute;
     top: 1rem;
@@ -59,12 +67,21 @@ export const ExamCardStyles = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      ${Media.phone`
+        width: 30rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      `};
     }
     .description {
       width: 40rem;
       font: 1.1rem 'Open Sans';
       text-align: justify;
       margin-bottom: 0.5rem;
+      ${Media.phone`
+        width: 30rem;
+         margin-bottom: 1rem;
+      `};
     }
     .meta {
       display: flex;

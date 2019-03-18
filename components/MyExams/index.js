@@ -7,7 +7,7 @@ import ExamCard from '../Exams/ExamCard'
 import Loading from '../Shared/Loading'
 
 const MainContent = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   background: ${props => props.theme.white};
   .exams {

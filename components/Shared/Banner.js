@@ -9,6 +9,6 @@ export const BannerTop = styled.div`
 `
 
 export const BannerTitle = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   font: 3rem 'Open Sans Light';
 `
