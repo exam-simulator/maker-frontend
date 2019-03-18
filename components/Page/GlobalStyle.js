@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import theme from './Theme'
+import theme from './theme'
 
 export default createGlobalStyle`
   @font-face {
