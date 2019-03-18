@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import Media from '../../Page/Media'
 
 export const PaginationStyles = styled.div`
   display: grid;
@@ -13,6 +14,9 @@ export const PaginationStyles = styled.div`
     color: ${props => props.theme.grey[10]};
     border: 1px solid ${props => props.theme.grey[2]};
     border-radius: ${props => props.theme.borderRadius};
+    ${Media.phone`
+        font-size: 1.1rem;
+      `};
     & > * {
       display: flex;
       align-items: center;
@@ -22,6 +26,9 @@ export const PaginationStyles = styled.div`
       border-right: 1px solid ${props => props.theme.grey[2]};
       text-align: center;
       cursor: pointer;
+      ${Media.phone`
+        width: 5rem;
+      `};
     }
     .prev {
       color: ${props => (props.firstPage ? props.theme.grey[5] : props.theme.grey[10])};

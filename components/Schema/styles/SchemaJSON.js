@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 import { transparentize, lighten } from 'polished'
+import Media from '../../Page/Media'
 
 export const SchemaBlock = styled.div`
   padding: 1rem;
+  ${Media.tablet`
+    align-self: flex-start;
+  `};
   .block-top {
     display: flex;
     justify-content: space-between;

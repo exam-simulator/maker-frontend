@@ -2,25 +2,31 @@ import styled from 'styled-components'
 import { BannerTop, BannerTitle } from '../Shared/Banner'
 import SchemaJSON from './SchemaJSON'
 import BasicCard from './BasicCard'
-
-const SchemaStyles = styled.div``
+import Media from '../Page/Media'
 
 const MainContent = styled.div`
-  width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidth};
   display: grid;
   grid-template-columns: 30% 70%;
   margin: 3rem auto;
+  ${Media.tablet`
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    align-items: center;
+    margin: 1rem auto;
+  `};
 `
 
 const InfoBlock = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
 `
 
 export default class Schema extends React.Component {
   render() {
     return (
-      <SchemaStyles>
+      <div>
         <BannerTop>
           <BannerTitle>Schema</BannerTitle>
         </BannerTop>
@@ -65,7 +71,7 @@ export default class Schema extends React.Component {
           </InfoBlock>
           <SchemaJSON />
         </MainContent>
-      </SchemaStyles>
+      </div>
     )
   }
 }
